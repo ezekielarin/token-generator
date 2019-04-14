@@ -54,18 +54,20 @@ include "db.php";
 	</form>
 </div>
 <div>
-	<table>
+	<table border="1" cellspacing="2">
 		<tr>
 			<th>Token</th>
 			<th>Value</th>
+			<th>Date generated</th>
 		</tr>
 		<?php
 		$query =mysqli_query($con,"SELECT * FROM tokens");
 		while ($tokens=mysqli_fetch_array($query)) {
 	    ?>
 	    <tr>
-	    	<td><?php echo $token['token']?></td>
-	    	<td><?php echo $token['token_value']?></td>
+	    	<td><?php echo $tokens['token']?></td>
+	    	<td><?php echo $tokens['token_value']?></td>
+	    	<td><?php echo $tokens['gen_date']?></td>
 	    </tr>
 
 	   <?php
