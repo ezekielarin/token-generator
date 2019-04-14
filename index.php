@@ -19,7 +19,7 @@ include "db.php";
           //iterate for the quantity specified
         for ($i=0; $i < $quantity; $i++) { 
 
-        	$code = rand(1111,99999);
+        	$code = rand(11,99999999999999999);
         	//trim to get the required length
         	$token = substr($code, 0, $length);
               //check if code already exists
@@ -29,15 +29,12 @@ include "db.php";
         	 $query = mysqli_query($con,"INSERT INTO tokens (token,token_value) VALUES('$token','$value')");
         	 if (!$query) {
         		echo $con->error;
-        	}
-
-        	}
-        	
-
-        	
+        	     }
+ 
+        	    }
             }
-   }
-?>
+       }
+    ?>
 
 
 
@@ -54,14 +51,14 @@ include "db.php";
 	</form>
 </div>
 <div>
-	<table border="1" cellspacing="2">
+	<table border="0" cellspacing="2" cellpadding="1">
 		<tr>
 			<th>Token</th>
 			<th>Value</th>
 			<th>Date generated</th>
 		</tr>
 		<?php
-		$query =mysqli_query($con,"SELECT * FROM tokens");
+		$query =mysqli_query($con,"SELECT * FROM tokens ORDER BY id DESC");
 		while ($tokens=mysqli_fetch_array($query)) {
 	    ?>
 	    <tr>
